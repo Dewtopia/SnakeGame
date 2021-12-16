@@ -67,6 +67,9 @@ struct SnakeGameBackground: CustomStringConvertible {
             if snake[0].column == snake[i].column && snake[0].row == snake[i].row {
                 return true
             }
+            else if snake[0].column < 0 || snake[0].column > SnakeGameBackground.columns || snake[0].row < 0 || snake[0].row > SnakeGameBackground.rows {
+                return true
+            }
         }
         return false
     }
