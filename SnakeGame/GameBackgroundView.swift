@@ -14,12 +14,19 @@ class GameBackgroundView: UIView {
     let cellSize: CGFloat = 23
   
     var shadowSnake: [SnakeCell] = []
-    
+    var shadowFoodColumns: Int = Int.min
+    var shadowFoodRows: Int = Int.min
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         drawGrid()
         drawSnake()
+        drawFood()
+    }
+    
+    func drawFood(){
+        UIColor.orange.setFill()
+        UIBezierPath(roundedRect: CGRect(x: originX + CGFloat(shadowFoodColumns) * cellSize, y: originY + CGFloat(shadowFoodRows) * cellSize, width: cellSize, height: cellSize), cornerRadius: 6).fill()
     }
     
     func drawSnake() {
