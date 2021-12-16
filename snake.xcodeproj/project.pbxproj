@@ -16,6 +16,7 @@
 		8D853EE3275F3888003CE684 /* snakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D853EE2275F3888003CE684 /* snakeTests.swift */; };
 		8D853EED275F3888003CE684 /* snakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D853EEC275F3888003CE684 /* snakeUITests.swift */; };
 		8D853EEF275F3888003CE684 /* snakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D853EEE275F3888003CE684 /* snakeUITestsLaunchTests.swift */; };
+		8DC097B6276ADB7000E3A634 /* PlayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC097B5276ADB7000E3A634 /* PlayArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8D853EE8275F3888003CE684 /* snakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D853EEC275F3888003CE684 /* snakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snakeUITests.swift; sourceTree = "<group>"; };
 		8D853EEE275F3888003CE684 /* snakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8DC097B5276ADB7000E3A634 /* PlayArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				8D853ECB275F3883003CE684 /* AppDelegate.swift */,
 				8D853ECD275F3883003CE684 /* SceneDelegate.swift */,
 				8D853ECF275F3883003CE684 /* ViewController.swift */,
+				8DC097B5276ADB7000E3A634 /* PlayArea.swift */,
 				8D853ED1275F3883003CE684 /* Main.storyboard */,
 				8D853ED4275F3887003CE684 /* Assets.xcassets */,
 				8D853ED6275F3887003CE684 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC097B6276ADB7000E3A634 /* PlayArea.swift in Sources */,
 				8D853ED0275F3883003CE684 /* ViewController.swift in Sources */,
 				8D853ECC275F3883003CE684 /* AppDelegate.swift in Sources */,
 				8D853ECE275F3883003CE684 /* SceneDelegate.swift in Sources */,
