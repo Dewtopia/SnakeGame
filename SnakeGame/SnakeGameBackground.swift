@@ -7,15 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 struct SnakeGameBackground: CustomStringConvertible {
-    //let screenSize:
+    //How to make columns and rows based on screen size?
+    let screenSize: CGRect = UIScreen.main.bounds
+    //let columns = Int(UIScreen.main.bounds.width) / 10
+    
     static let columns: Int = 10
     static let rows: Int = 10
-    //static let columns: UIScreen
-    //static let rows:
+    
     var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
+    //var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
     var foodRows: Int = Int(arc4random()) % SnakeGameBackground.rows
+    var score: Int = 0
     
     var snake: [SnakeCell] = []
     
@@ -38,6 +43,7 @@ struct SnakeGameBackground: CustomStringConvertible {
     }
     
     mutating func updateGameBoard(newHead: SnakeCell) {
+        deathCheck()
         var newSnake: [SnakeCell] = []
         newSnake.append(newHead)
         
@@ -48,23 +54,31 @@ struct SnakeGameBackground: CustomStringConvertible {
         if snake[0].column == foodColumns && snake[0].row == foodRows{
             newSnake.append(currentTail)
             renderNextFood()
+            score += 1
+        }
+        if deathCheck() {
+            newSnake.removeAll()
         }
         snake = newSnake
     }
     
     mutating func deathCheck() -> Bool {
-        for i in 1..<snake.count - 1 {
+        for i in 1..<snake.count {
             if snake[0].column == snake[i].column && snake[0].row == snake[i].row {
-                die()
+                return true
             }
         }
         return false
     }
     
-    mutating func die() {
+    /*mutating func die() {
         snake.removeAll()
+        return true
+        //var newSnake: [SnakeCell] = []
+        //newSnake.removeAll()
+        //snake = newSnake
         //call game over screen
-    }
+    }*/
     
     func isOnSnake(column: Int, row: Int) -> Bool {
         for cell in snake {

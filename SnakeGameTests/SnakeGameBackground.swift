@@ -14,5 +14,7 @@ class SnakeGameBackgroundTest: XCTestCase {
         var background = SnakeGameBackground()
         background.snake.append(SnakeCell(column: 2, row: 1))
         print(background)
+        print(background.screenSize)
+        //print(background.columns)
     }
 }

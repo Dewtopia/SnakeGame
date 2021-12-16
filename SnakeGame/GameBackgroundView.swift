@@ -12,7 +12,6 @@ class GameBackgroundView: UIView {
     let startX: CGFloat = 3
     let startY: CGFloat = 5
     let cellSize: CGFloat = 23
-    var score: Int = Int.min
     var shadowSnake: [SnakeCell] = []
     var shadowFoodColumns: Int = Int.min
     var shadowFoodRows: Int = Int.min

@@ -13,11 +13,14 @@ class ViewController: UIViewController {
 
     var background: SnakeGameBackground = SnakeGameBackground()
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    //@IBOutlet var scoreLabel: UITextField!
+    
     var snakeDirection: snakeMovement = .down
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        background.snake.append(SnakeCell(column: 2, row: 4))
         background.snake.append(SnakeCell(column: 2, row: 3))
         background.snake.append(SnakeCell(column: 2, row: 2))
         background.snake.append(SnakeCell(column: 2, row: 1))
