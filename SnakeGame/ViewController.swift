@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     private func updateGameBoard(){
         backgroundView.shadowSnake = background.snake
         backgroundView.shadowFoodColumns = background.foodColumns
@@ -60,5 +61,27 @@ class ViewController: UIViewController {
         snakeDirection = .down
     }
     
+    @IBAction func tapMovement(_ sender: UITapGestureRecognizer) {
+        let snakeMovement = sender.location(in: backgroundView)
+        let snakeHead = background.snake[0]
+        let snakeHeadX: CGFloat = backgroundView.originX + (CGFloat(snakeHead.column) + 0.5) * backgroundView.cellSize
+        let snakeHeadY: CGFloat = backgroundView.originY + (CGFloat(snakeHead.row) + 0.5) * backgroundView.cellSize
+        
+        switch snakeDirection {
+        case .up, .down:
+            if snakeMovement.x > snakeHeadX {
+                snakeDirection = .right
+            }else{
+                snakeDirection = .left
+            }
+        case .left, .right:
+            if snakeMovement.y > snakeHeadY {
+                snakeDirection = .down
+            }else{
+                snakeDirection = .up
+            }
+        updateGameBoard()
+        }
+    }
 }
 

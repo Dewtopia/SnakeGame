@@ -10,7 +10,7 @@ import Foundation
 
 struct SnakeGameBackground: CustomStringConvertible {
     static let columns: Int = 16
-    static let rows: Int = 20
+    static let rows: Int = 28
     
     var foodColumns: Int = 1
     var foodRows: Int = 3

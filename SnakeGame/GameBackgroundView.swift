@@ -10,9 +10,9 @@ import UIKit
 
 class GameBackgroundView: UIView {
     let originX: CGFloat = 3
-    let originY: CGFloat = 1
+    let originY: CGFloat = 5
     let cellSize: CGFloat = 23
-  
+    var score: Int = Int.min
     var shadowSnake: [SnakeCell] = []
     var shadowFoodColumns: Int = Int.min
     var shadowFoodRows: Int = Int.min
@@ -23,7 +23,6 @@ class GameBackgroundView: UIView {
         drawSnake()
         drawFood()
     }
-    
     func drawFood(){
         UIColor.orange.setFill()
         UIBezierPath(roundedRect: CGRect(x: originX + CGFloat(shadowFoodColumns) * cellSize, y: originY + CGFloat(shadowFoodRows) * cellSize, width: cellSize, height: cellSize), cornerRadius: 6).fill()
@@ -44,7 +43,7 @@ class GameBackgroundView: UIView {
         }
         */
         
-        UIColor.brown.setFill()
+        UIColor.purple.setFill()
         for i in 1..<shadowSnake.count {
             let cell = shadowSnake[i]
             UIBezierPath(roundedRect: CGRect(x: originX + CGFloat(cell.column) * cellSize, y: originY + CGFloat(cell.row) * cellSize, width: cellSize, height: cellSize), cornerRadius: 6).fill()
