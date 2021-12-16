@@ -9,17 +9,23 @@
 import UIKit
 
 class GameBackgroundView: UIView {
-    let originX: CGFloat = 53
-    let originY: CGFloat = 71
+    let originX: CGFloat = 3
+    let originY: CGFloat = 5
     let cellSize: CGFloat = 23
-  
+    var score: Int = Int.min
     var shadowSnake: [SnakeCell] = []
-    
+    var shadowFoodColumns: Int = Int.min
+    var shadowFoodRows: Int = Int.min
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         drawGrid()
         drawSnake()
+        drawFood()
+    }
+    func drawFood(){
+        UIColor.orange.setFill()
+        UIBezierPath(roundedRect: CGRect(x: originX + CGFloat(shadowFoodColumns) * cellSize, y: originY + CGFloat(shadowFoodRows) * cellSize, width: cellSize, height: cellSize), cornerRadius: 6).fill()
     }
     
     func drawSnake() {
@@ -37,7 +43,7 @@ class GameBackgroundView: UIView {
         }
         */
         
-        UIColor.brown.setFill()
+        UIColor.purple.setFill()
         for i in 1..<shadowSnake.count {
             let cell = shadowSnake[i]
             UIBezierPath(roundedRect: CGRect(x: originX + CGFloat(cell.column) * cellSize, y: originY + CGFloat(cell.row) * cellSize, width: cellSize, height: cellSize), cornerRadius: 6).fill()
@@ -55,7 +61,7 @@ class GameBackgroundView: UIView {
             gridPath.move(to: CGPoint(x: originX + CGFloat(i) * cellSize, y: originY))
             gridPath.addLine(to: CGPoint(x: originX + CGFloat(i) * cellSize, y: originY + CGFloat(SnakeGameBackground.rows) * cellSize))
         }
-        UIColor.lightGray.setStroke()
+        UIColor.green.setStroke()
         gridPath.stroke()
     }
 }

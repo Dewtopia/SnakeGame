@@ -9,32 +9,45 @@
 import Foundation
 
 struct SnakeGameBackground: CustomStringConvertible {
-    static let columns: Int = 9
-    static let rows: Int = 7
+    static let columns: Int = 16
+    static let rows: Int = 28
+    
+    var foodColumns: Int = 1
+    var foodRows: Int = 3
     
     var snake: [SnakeCell] = []
     
-    mutating func moveLeft() {
-        snake = updateSnake(newHead: SnakeCell(column: snake[0].column - 1, row: snake[0].row))
-    }
-    mutating func moveRight() {
-        snake = updateSnake(newHead: SnakeCell(column: snake[0].column + 1, row: snake[0].row))
-    }
-    mutating func moveUp() {
-        snake = updateSnake(newHead: SnakeCell(column: snake[0].column, row: snake[0].row - 1))
-    }
-    mutating func moveDown() {
-        snake = updateSnake(newHead: SnakeCell(column: snake[0].column, row: snake[0].row + 1))
+    mutating func renderNextFood() {
+        foodColumns = Int(arc4random()) % SnakeGameBackground.columns
+        foodRows = Int(arc4random()) % SnakeGameBackground.rows
     }
     
-    func updateSnake(newHead: SnakeCell) -> [SnakeCell] {
+    mutating func moveLeft() {
+        updateGameBoard(newHead: SnakeCell(column: snake[0].column - 1, row: snake[0].row))
+    }
+    mutating func moveRight() {
+        updateGameBoard(newHead: SnakeCell(column: snake[0].column + 1, row: snake[0].row))
+    }
+    mutating func moveUp() {
+        updateGameBoard(newHead: SnakeCell(column: snake[0].column, row: snake[0].row - 1))
+    }
+    mutating func moveDown() {
+        updateGameBoard(newHead: SnakeCell(column: snake[0].column, row: snake[0].row + 1))
+    }
+    
+    mutating func updateGameBoard(newHead: SnakeCell){
         var newSnake: [SnakeCell] = []
         newSnake.append(newHead)
         
         for i in 0..<snake.count - 1 {
             newSnake.append(snake[i])
         }
-        return newSnake
+        let currentTail = snake[snake.count - 1]
+        if snake[0].column == foodColumns && snake[0].row == foodRows{
+            newSnake.append(currentTail)
+            renderNextFood()
+        }
+        snake = newSnake
     }
     
     func isOnSnake(column: Int, row: Int) -> Bool {
