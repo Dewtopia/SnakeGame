@@ -108,16 +108,16 @@
 			isa = PBXGroup;
 			children = (
 				02D27B24276A82FC0086722A /* SnakeGameBackground.swift */,
-				02D27B2A276A8F260086722A /* SnakeCell.swift */,
 				02D27B222769CCC70086722A /* GameBackgroundView.swift */,
-				02D27AF82769CCAE0086722A /* Main.storyboard */,
 				02D27AF62769CCAE0086722A /* ViewController.swift */,
+				02D27B2A276A8F260086722A /* SnakeCell.swift */,
+				02D27AF82769CCAE0086722A /* Main.storyboard */,
+				8DC097B7276B2B6D00E3A634 /* SnakeMovement.swift */,
 				02D27AFB2769CCB00086722A /* Assets.xcassets */,
 				02D27B002769CCB00086722A /* Info.plist */,
+				02D27AFD2769CCB00086722A /* LaunchScreen.storyboard */,
 				02D27AF22769CCAE0086722A /* AppDelegate.swift */,
 				02D27AF42769CCAE0086722A /* SceneDelegate.swift */,
-				02D27AFD2769CCB00086722A /* LaunchScreen.storyboard */,
-				8DC097B7276B2B6D00E3A634 /* SnakeMovement.swift */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
