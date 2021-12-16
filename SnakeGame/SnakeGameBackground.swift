@@ -9,8 +9,8 @@
 import Foundation
 
 struct SnakeGameBackground: CustomStringConvertible {
-    static let columns: Int = 9
-    static let rows: Int = 7
+    static let columns: Int = 16
+    static let rows: Int = 20
     
     var foodColumns: Int = 1
     var foodRows: Int = 3

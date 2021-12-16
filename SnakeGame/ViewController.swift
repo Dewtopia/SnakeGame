@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     var background: SnakeGameBackground = SnakeGameBackground()
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    var snakeDirection: snakeMovement = .down
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,17 @@ class ViewController: UIViewController {
         
         updateGameBoard()
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-            self.background.moveDown()
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] (Timer) in
+            switch self.snakeDirection {
+            case .up:
+                self.background.moveUp()
+            case .down:
+                self.background.moveDown()
+            case .left:
+                self.background.moveLeft()
+            case .right:
+                self.background.moveRight()
+            }
             self.updateGameBoard()
         }
     }
@@ -38,20 +48,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func leftButton(_ sender: Any) {
-        background.moveLeft()
-        updateGameBoard()
+        snakeDirection = .left
     }
     @IBAction func rightButton(_ sender: Any) {
-        background.moveRight()
-        updateGameBoard()
+        snakeDirection = .right
     }
     @IBAction func upButton(_ sender: Any) {
-        background.moveUp()
-        updateGameBoard()
+        snakeDirection = .up
     }
     @IBAction func downButton(_ sender: Any) {
-        background.moveDown()
-        updateGameBoard()
+        snakeDirection = .down
     }
     
 }

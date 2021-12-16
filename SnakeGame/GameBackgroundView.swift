@@ -9,8 +9,8 @@
 import UIKit
 
 class GameBackgroundView: UIView {
-    let originX: CGFloat = 53
-    let originY: CGFloat = 71
+    let originX: CGFloat = 3
+    let originY: CGFloat = 1
     let cellSize: CGFloat = 23
   
     var shadowSnake: [SnakeCell] = []
@@ -62,7 +62,7 @@ class GameBackgroundView: UIView {
             gridPath.move(to: CGPoint(x: originX + CGFloat(i) * cellSize, y: originY))
             gridPath.addLine(to: CGPoint(x: originX + CGFloat(i) * cellSize, y: originY + CGFloat(SnakeGameBackground.rows) * cellSize))
         }
-        UIColor.lightGray.setStroke()
+        UIColor.green.setStroke()
         gridPath.stroke()
     }
 }
