@@ -7,15 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 struct SnakeGameBackground: CustomStringConvertible {
-    //let screenSize:
+    //How to make columns and rows based on screen size?
+    let screenSize: CGRect = UIScreen.main.bounds
+    //let columns = Int(UIScreen.main.bounds.width) / 10
+    
     static let columns: Int = 10
     static let rows: Int = 10
-    //static let columns: UIScreen
-    //static let rows:
+    var dead: Bool = false
+    
     var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
+    //var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
     var foodRows: Int = Int(arc4random()) % SnakeGameBackground.rows
+    var score: Int = 0
     
     var snake: [SnakeCell] = []
     
@@ -38,33 +44,49 @@ struct SnakeGameBackground: CustomStringConvertible {
     }
     
     mutating func updateGameBoard(newHead: SnakeCell) {
-        var newSnake: [SnakeCell] = []
-        newSnake.append(newHead)
-        
-        for i in 0..<snake.count - 1 {
-            newSnake.append(snake[i])
+        if !dead {
+            deathCheck()
+            var newSnake: [SnakeCell] = []
+            newSnake.append(newHead)
+            
+            for i in 0..<snake.count - 1 {
+                newSnake.append(snake[i])
+            }
+            let currentTail = snake[snake.count - 1]
+            if snake[0].column == foodColumns && snake[0].row == foodRows{
+                newSnake.append(currentTail)
+                renderNextFood()
+                score += 1
+            }
+            if deathCheck() {
+                newSnake.removeAll()
+            }
+            snake = newSnake
         }
-        let currentTail = snake[snake.count - 1]
-        if snake[0].column == foodColumns && snake[0].row == foodRows{
-            newSnake.append(currentTail)
-            renderNextFood()
-        }
-        snake = newSnake
     }
     
     mutating func deathCheck() -> Bool {
-        for i in 1..<snake.count - 1 {
+        for i in 1..<snake.count {
             if snake[0].column == snake[i].column && snake[0].row == snake[i].row {
-                die()
+                dead = true
+                return true
+            }
+            else if snake[0].column < 0 || snake[0].column > SnakeGameBackground.columns || snake[0].row < 0 || snake[0].row > SnakeGameBackground.rows {
+                dead = true
+                return true
             }
         }
         return false
     }
     
-    mutating func die() {
+    /*mutating func die() {
         snake.removeAll()
+        return true
+        //var newSnake: [SnakeCell] = []
+        //newSnake.removeAll()
+        //snake = newSnake
         //call game over screen
-    }
+    }*/
     
     func isOnSnake(column: Int, row: Int) -> Bool {
         for cell in snake {
