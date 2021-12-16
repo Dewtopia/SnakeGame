@@ -9,11 +9,13 @@
 import Foundation
 
 struct SnakeGameBackground: CustomStringConvertible {
-    static let columns: Int = 16
-    static let rows: Int = 28
-    
-    var foodColumns: Int = 1
-    var foodRows: Int = 3
+    //let screenSize:
+    static let columns: Int = 10
+    static let rows: Int = 10
+    //static let columns: UIScreen
+    //static let rows:
+    var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
+    var foodRows: Int = Int(arc4random()) % SnakeGameBackground.rows
     
     var snake: [SnakeCell] = []
     
@@ -35,7 +37,7 @@ struct SnakeGameBackground: CustomStringConvertible {
         updateGameBoard(newHead: SnakeCell(column: snake[0].column, row: snake[0].row + 1))
     }
     
-    mutating func updateGameBoard(newHead: SnakeCell){
+    mutating func updateGameBoard(newHead: SnakeCell) {
         var newSnake: [SnakeCell] = []
         newSnake.append(newHead)
         
@@ -48,6 +50,20 @@ struct SnakeGameBackground: CustomStringConvertible {
             renderNextFood()
         }
         snake = newSnake
+    }
+    
+    mutating func deathCheck() -> Bool {
+        for i in 1..<snake.count - 1 {
+            if snake[0].column == snake[i].column && snake[0].row == snake[i].row {
+                die()
+            }
+        }
+        return false
+    }
+    
+    mutating func die() {
+        snake.removeAll()
+        //call game over screen
     }
     
     func isOnSnake(column: Int, row: Int) -> Bool {
@@ -71,7 +87,6 @@ struct SnakeGameBackground: CustomStringConvertible {
             desc += "\(row)"
             for column in 0..<SnakeGameBackground.columns {
                 if isOnSnake(column: column, row: row) {
-                    //let head = snake[0]
                     
                     if snake[0].column == column && snake[0].row == row {
                         desc += " x"

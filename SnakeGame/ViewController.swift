@@ -18,10 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        background.snake.append(SnakeCell(column: 2, row: 3))
+        background.snake.append(SnakeCell(column: 2, row: 2))
         background.snake.append(SnakeCell(column: 2, row: 1))
-        background.snake.append(SnakeCell(column: 3, row: 1))
-        background.snake.append(SnakeCell(column: 3, row: 2))
-        background.snake.append(SnakeCell(column: 3, row: 3))
         
         updateGameBoard()
         
@@ -64,8 +63,8 @@ class ViewController: UIViewController {
     @IBAction func tapMovement(_ sender: UITapGestureRecognizer) {
         let snakeMovement = sender.location(in: backgroundView)
         let snakeHead = background.snake[0]
-        let snakeHeadX: CGFloat = backgroundView.originX + (CGFloat(snakeHead.column) + 0.5) * backgroundView.cellSize
-        let snakeHeadY: CGFloat = backgroundView.originY + (CGFloat(snakeHead.row) + 0.5) * backgroundView.cellSize
+        let snakeHeadX: CGFloat = backgroundView.startX + (CGFloat(snakeHead.column) + 0.5) * backgroundView.cellSize
+        let snakeHeadY: CGFloat = backgroundView.startY + (CGFloat(snakeHead.row) + 0.5) * backgroundView.cellSize
         
         switch snakeDirection {
         case .up, .down:
