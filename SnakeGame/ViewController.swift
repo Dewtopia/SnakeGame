@@ -30,13 +30,21 @@ class ViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] (Timer) in
             switch self.snakeDirection {
             case .up:
-                self.background.moveUp()
+                if !self.background.dead {
+                    self.background.moveUp()
+                }
             case .down:
-                self.background.moveDown()
+                if !self.background.dead {
+                    self.background.moveDown()
+                }
             case .left:
-                self.background.moveLeft()
+                if !self.background.dead {
+                    self.background.moveLeft()
+                }
             case .right:
-                self.background.moveRight()
+                if !self.background.dead {
+                    self.background.moveRight()
+                }
             }
             self.updateGameBoard()
         }

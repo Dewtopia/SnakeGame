@@ -16,6 +16,7 @@ struct SnakeGameBackground: CustomStringConvertible {
     
     static let columns: Int = 10
     static let rows: Int = 10
+    var dead: Bool = false
     
     var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
     //var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
@@ -43,31 +44,35 @@ struct SnakeGameBackground: CustomStringConvertible {
     }
     
     mutating func updateGameBoard(newHead: SnakeCell) {
-        deathCheck()
-        var newSnake: [SnakeCell] = []
-        newSnake.append(newHead)
-        
-        for i in 0..<snake.count - 1 {
-            newSnake.append(snake[i])
+        if !dead {
+            deathCheck()
+            var newSnake: [SnakeCell] = []
+            newSnake.append(newHead)
+            
+            for i in 0..<snake.count - 1 {
+                newSnake.append(snake[i])
+            }
+            let currentTail = snake[snake.count - 1]
+            if snake[0].column == foodColumns && snake[0].row == foodRows{
+                newSnake.append(currentTail)
+                renderNextFood()
+                score += 1
+            }
+            if deathCheck() {
+                newSnake.removeAll()
+            }
+            snake = newSnake
         }
-        let currentTail = snake[snake.count - 1]
-        if snake[0].column == foodColumns && snake[0].row == foodRows{
-            newSnake.append(currentTail)
-            renderNextFood()
-            score += 1
-        }
-        if deathCheck() {
-            newSnake.removeAll()
-        }
-        snake = newSnake
     }
     
     mutating func deathCheck() -> Bool {
         for i in 1..<snake.count {
             if snake[0].column == snake[i].column && snake[0].row == snake[i].row {
+                dead = true
                 return true
             }
             else if snake[0].column < 0 || snake[0].column > SnakeGameBackground.columns || snake[0].row < 0 || snake[0].row > SnakeGameBackground.rows {
+                dead = true
                 return true
             }
         }
