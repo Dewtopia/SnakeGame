@@ -23,6 +23,11 @@ class ViewController: UIViewController {
         background.snake.append(SnakeCell(column: 3, row: 3))
         
         updateGameBoard()
+        
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+            self.background.moveDown()
+            self.updateGameBoard()
+        }
     }
     
     private func updateGameBoard(){
@@ -48,5 +53,6 @@ class ViewController: UIViewController {
         background.moveDown()
         updateGameBoard()
     }
+    
 }
 
