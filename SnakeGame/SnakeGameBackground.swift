@@ -12,13 +12,13 @@ import UIKit
 struct SnakeGameBackground: CustomStringConvertible {
     //How to make columns and rows based on screen size?
     let screenSize: CGRect = UIScreen.main.bounds
-    //let columns = Int(UIScreen.main.bounds.width) / 10
-    
-    static let columns: Int = 10
-    static let rows: Int = 10
+    static let columns = Int(UIScreen.main.bounds.width) / 25
+    static let rows = Int(UIScreen.main.bounds.width) / 25
+    //static let columns: Int = 10
+    //static let rows: Int = 10
     var dead: Bool = false
     
-    var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
+    var foodColumns: Int = Int(arc4random()) % columns
     //var foodColumns: Int = Int(arc4random()) % SnakeGameBackground.columns
     var foodRows: Int = Int(arc4random()) % SnakeGameBackground.rows
     var score: Int = 0
