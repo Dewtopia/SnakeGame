@@ -12,8 +12,10 @@ class GameEndViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
+    }
+    
+    @IBAction func backToGame() {
+        let resetGame = storyboard?.instantiateViewController(withIdentifier: "gameBoard") as! ViewController
+        present(resetGame, animated: true)
     }
 }

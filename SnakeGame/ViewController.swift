@@ -48,6 +48,11 @@ class ViewController: UIViewController {
                     self.background.moveRight()
                 }
             }
+            
+            if self.background.dead {
+                self.gameOver()
+            }
+            
             self.updateGameBoard()
         }
     }
@@ -60,6 +65,12 @@ class ViewController: UIViewController {
         backgroundView.setNeedsDisplay()
     }
     
+    @IBAction func gameOver(){
+        guard let endGameScreen = (storyboard?.instantiateViewController(withIdentifier: "gameEndVC") as? GameEndViewController) else{
+            return
+        }
+            present(endGameScreen, animated: true)
+    }
     
     @IBAction func resetGameState(_ sender: Any) {
         
