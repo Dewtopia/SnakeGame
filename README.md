@@ -4,8 +4,11 @@
 CSC690 Final Project
 
 Students:
+
 Grayson Dew - 920727818
+
 Anthony Borges - 920168519
+
 
 Description:
 Bringing back the Nokia nostalgia with a Snake game that you used to play when you were young while you waited for your parents to finish doing something.
