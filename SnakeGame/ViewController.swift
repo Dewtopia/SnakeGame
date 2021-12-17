@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     var background: SnakeGameBackground = SnakeGameBackground()
     @IBOutlet weak var backgroundView: GameBackgroundView!
+
+
     //@IBOutlet var scoreLabel: UITextField!
     
     var snakeDirection: snakeMovement = .down
@@ -58,6 +60,10 @@ class ViewController: UIViewController {
         backgroundView.setNeedsDisplay()
     }
     
+    
+    @IBAction func resetGameState(_ sender: Any) {
+        
+    }
     @IBAction func leftButton(_ sender: Any) {
         snakeDirection = .left
     }

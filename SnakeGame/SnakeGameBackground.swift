@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import UIKit
+//import UIKit
 
 struct SnakeGameBackground: CustomStringConvertible {
     //How to make columns and rows based on screen size?
-    let screenSize: CGRect = UIScreen.main.bounds
+    //let screenSize: CGRect = UIScreen.main.bounds
     //let columns = Int(UIScreen.main.bounds.width) / 10
     
     static let columns: Int = 10
